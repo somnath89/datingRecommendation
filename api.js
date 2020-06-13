@@ -40,9 +40,9 @@ router.post('/recommendation', (req, res, next) => {
   if(req.body){
      
      var newArray = dataStored.filter(function (el) {
-       return el.Gender != req.body.Gender;
+       return el.Gender != req.body.Gender; //&& el.Interest.includes(req.body.Interest);
      }).reduce(function(prev, obj) {
-         return (Math.abs(obj.Age - req.body.Age) < Math.abs(prev.Age - req.body.Age) ? obj : prev);
+         return (Math.abs(obj.Age - req.body.Age) <= Math.abs(prev.Age - req.body.Age) ? obj : prev);
 });
 
      res.json({
